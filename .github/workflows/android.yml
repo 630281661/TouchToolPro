@@ -26,7 +26,7 @@
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: APK/app-debug.apk
  ​
   release:
     name: Release APK
@@ -59,13 +59,11 @@
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: apk/app-debug.apk
+          asset_path: APK/app-debug.apk
           asset_name: ${{ github.event.repository.name }}  ${{ steps.branch-name.outputs.current_branch }} v${{ github.run_number }}.${{ github.run_attempt }}.apk
-          asset_content_type: application/zi
-  pull_request:
-    branches:
-      - main
-      - "feature/*"
+          asset_content_type: application/zip
+  pull_request:
+    branches: [ "main" ]
  ​
  jobs:
   apk:
@@ -89,7 +87,7 @@
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: APK/app-debug.apk
  ​
   release:
     name: Release APK
@@ -122,6 +120,6 @@
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: apk/app-debug.apk
+          asset_path: APK/app-debug.apk
           asset_name: ${{ github.event.repository.name }}  ${{ steps.branch-name.outputs.current_branch }} v${{ github.run_number }}.${{ github.run_attempt }}.apk
           asset_content_type: application/zip
