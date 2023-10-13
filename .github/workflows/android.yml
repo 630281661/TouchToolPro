@@ -26,7 +26,7 @@
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: [ "APK/app-debug.apk" ]
+          path: [ "~/.APK/app-debug.apk" ]
  ​
   release:
     name: Release APK
@@ -59,7 +59,7 @@
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: APK/app-debug.apk
+          asset_path: ~/.APK/app-debug.apk
           asset_name: ${{ github.event.repository.name }}  ${{ steps.branch-name.outputs.current_branch }} v${{ github.run_number }}.${{ github.run_attempt }}.apk
           asset_content_type: application/zip
   pull_request:
@@ -87,7 +87,7 @@
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: APK/app-debug.apk
+          path: ~/.~/.APK/app-debug.apk
  ​
   release:
     name: Release APK
@@ -120,6 +120,6 @@
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: APK/app-debug.apk
+          asset_path: ~/.APK/app-debug.apk
           asset_name: ${{ github.event.repository.name }}  ${{ steps.branch-name.outputs.current_branch }} v${{ github.run_number }}.${{ github.run_attempt }}.apk
           asset_content_type: application/zip
